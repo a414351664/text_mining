@@ -7,7 +7,7 @@ class TCNNConfig(object):
     """CNN配置参数"""
 
     embedding_dim = 64  # 词向量维度
-    seq_length = 600  # 序列长度
+    seq_length = 70  # 序列长度
     num_classes = 3  # 类别数
     num_filters = 256  # 卷积核数目
     kernel_size = 5  # 卷积核尺寸
