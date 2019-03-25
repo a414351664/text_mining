@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import tensorflow as tf
+from data.cnews_loader import attention
 
 class TRNNConfig(object):
     """RNN配置参数"""
