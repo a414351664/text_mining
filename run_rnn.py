@@ -12,7 +12,7 @@ import tensorflow as tf
 from sklearn import metrics
 
 from rnn_model import TRNNConfig, TextRNN
-from data.cnews_loader import read_vocab, read_category, batch_iter, process_file, build_vocab
+from data.cnews_loader import *
 
 base_dir = 'data'
 train_dir = os.path.join(base_dir, 'train.json')
