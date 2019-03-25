@@ -16,6 +16,9 @@ class TRNNConfig(object):
     hidden_dim = 150        # 隐藏层神经元
     rnn = 'gru'             # lstm 或 gru
 
+    attention_dim = 50
+    l2_reg_lambda = 0.01
+
     dropout_keep_prob = 0.8 # dropout保留比例
     learning_rate = 1e-3    # 学习率
 
@@ -65,11 +68,12 @@ class TextRNN(object):
             rnn_cell = tf.contrib.rnn.MultiRNNCell(cells, state_is_tuple=True)
 
             _outputs, _ = tf.nn.dynamic_rnn(cell=rnn_cell, inputs=embedding_inputs, dtype=tf.float32)
-            last = _outputs[:, -1, :]  # 取最后一个时序输出作为结果
+            # last = _outputs[:, -1, :]  # 取最后一个时序输出作为结果
+	    output = attention(_outputs, self.config.attention_dim, self.config.l2_reg_lambda)
 
         with tf.name_scope("score"):
             # 全连接层，后面接dropout以及relu激活
-            fc = tf.layers.dense(last, self.config.hidden_dim, name='fc1')
+            fc = tf.layers.dense(output, self.config.hidden_dim, name='fc1')
             fc = tf.contrib.layers.dropout(fc, self.keep_prob)
             fc = tf.nn.relu(fc)
 
