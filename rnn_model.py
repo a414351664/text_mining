@@ -69,7 +69,7 @@ class TextRNN(object):
 
             _outputs, _ = tf.nn.dynamic_rnn(cell=rnn_cell, inputs=embedding_inputs, dtype=tf.float32)
             # last = _outputs[:, -1, :]  # 取最后一个时序输出作为结果
-	    output = attention(_outputs, self.config.attention_dim, self.config.l2_reg_lambda)
+            output = attention(_outputs, self.config.attention_dim, self.config.l2_reg_lambda)
         with tf.name_scope("score"):
             # 全连接层，后面接dropout以及relu激活
             fc = tf.layers.dense(output, self.config.hidden_dim, name='fc1')
