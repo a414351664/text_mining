@@ -5,7 +5,7 @@ from collections import Counter
 import json
 import numpy as np
 import tensorflow.contrib.keras as kr
-
+import tensorflow as tf
 
 def open_file(filename, mode='r'):
     """
