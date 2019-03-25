@@ -5,7 +5,7 @@
 
 ## 环境
 
-- Python 2/3 (感谢[howie.hu](https://github.com/howie6879)调试Python2环境)
+- Python 3
 - TensorFlow 1.3以上
 - numpy
 - scikit-learn
