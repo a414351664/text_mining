@@ -11,9 +11,9 @@ class TCNNConfig(object):
     num_classes = 3  # 类别数
     num_filters = 128  # 卷积核数目
     kernel_size = 5  # 卷积核尺寸
-    vocab_size = 5000  # 词汇表达小
+    vocab_size = 4000  # 词汇表达小
 
-    hidden_dim = 128  # 全连接层神经元
+    hidden_dim = 150  # 全连接层神经元
 
     dropout_keep_prob = 0.5  # dropout保留比例
     learning_rate = 1e-3  # 学习率
@@ -48,7 +48,7 @@ class TextCNN(object):
         with tf.name_scope("cnn"):
             # CNN layer
             conv = tf.layers.conv1d(embedding_inputs, self.config.num_filters, self.config.kernel_size, name='conv')
-            conv = tf.layers.conv1d(conv, self.config.num_filters+16, self.config.kernel_size-2, name='conv1')
+            # conv = tf.layers.conv1d(conv, self.config.num_filters+16, self.config.kernel_size-2, name='conv1')
 	    # global max pooling layer
             gmp = tf.reduce_max(conv, reduction_indices=[1], name='gmp')
 
